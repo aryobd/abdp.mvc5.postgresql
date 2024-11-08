@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace abdp.Service
 {
-    public class CommTrClassService : ICommTrClassService
+    public class CommTrGroupService : ICommTrGroupService
     {
-        private IQueryable<CommTrClassServiceModel> Query
+        private IQueryable<CommTrGroupServiceModel> Query
         {
             get
             {
@@ -23,30 +23,23 @@ namespace abdp.Service
                 string sqlQuery = @"
                     select
                     a.group_code,
-                    a.class_code,
-                    a.class_desc,
-                    a.meter_size_code,
+                    a.group_desc
                     
-                    b.group_desc
-                    
-                    from comm.tr_class a
-                    
-                    join comm.tr_group b
-                    on a.group_code = b.group_code
+                    from comm.tr_group a
                     ";
 
                 // EXECUTE THE QUERY AND MAP TO THE MODEL
-                var qry = dbContext.Database.SqlQuery<CommTrClassServiceModel>(sqlQuery).AsQueryable();
+                var qry = dbContext.Database.SqlQuery<CommTrGroupServiceModel>(sqlQuery).AsQueryable();
 
                 return qry;
             }
         }
 
-        public List<CommTrClassServiceModel> GetList(
-            Expression<Func<CommTrClassServiceModel, bool>> where,
+        public List<CommTrGroupServiceModel> GetList(
+            Expression<Func<CommTrGroupServiceModel, bool>> where,
             int take,
             int skip,
-            Expression<Func<CommTrClassServiceModel, string>> sort,
+            Expression<Func<CommTrGroupServiceModel, string>> sort,
             string sortDirection
         )
         {
@@ -71,7 +64,7 @@ namespace abdp.Service
             return Query.Count();
         }
 
-        public int TotalRows(Expression<Func<CommTrClassServiceModel, bool>> where)
+        public int TotalRows(Expression<Func<CommTrGroupServiceModel, bool>> where)
         {
             if (where == null)
                 return TotalRows();
@@ -86,27 +79,21 @@ namespace abdp.Service
 
             try
             {
-                dbContext.comm_tr_class.Add(new comm_tr_class
+                dbContext.comm_tr_group.Add(new comm_tr_group
                 {
-                    group_code = 6,
-                    class_code = "xxx",
-                    class_desc = "xxx",
-                    meter_size_code = null
+                    group_code = 8,
+                    group_desc = "xxx"
                 });
 
-                comm_tr_class item1 = new comm_tr_class();
-                item1.group_code = 6;
-                item1.class_code = "yyy";
-                item1.class_desc = "yyy";
-                item1.meter_size_code = null;
-                dbContext.comm_tr_class.Add(item1);
+                comm_tr_group item1 = new comm_tr_group();
+                item1.group_code = 9;
+                item1.group_desc = "yyy";
+                dbContext.comm_tr_group.Add(item1);
 
-                comm_tr_class item2 = new comm_tr_class();
-                item2.group_code = 6;
-                item2.class_code = "zzz";
-                item2.class_desc = "zzz";
-                item2.meter_size_code = null;
-                dbContext.comm_tr_class.Add(item2);
+                comm_tr_group item2 = new comm_tr_group();
+                item2.group_code = 10;
+                item2.group_desc = "zzz";
+                dbContext.comm_tr_group.Add(item2);
 
                 dbContext.SaveChanges();
 

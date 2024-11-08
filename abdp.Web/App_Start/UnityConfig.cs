@@ -18,6 +18,8 @@ namespace abdp.Web
             // e.g. container.RegisterType<ITestService, TestService>();
 
             container.RegisterType<IOlssModelVehicleService, OlssModelVehicleService>();
+
+            container.RegisterType<ICommTrGroupService, CommTrGroupService>();
             container.RegisterType<ICommTrClassService, CommTrClassService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

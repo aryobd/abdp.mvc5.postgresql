@@ -75,11 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServices\ICommTrClassService.cs" />
+    <Compile Include="IServices\ICommTrGroupService.cs" />
     <Compile Include="IServices\IOlssModelVehicleService.cs" />
     <Compile Include="Models\CommTrClassServiceModel.cs" />
+    <Compile Include="Models\CommTrGroupServiceModel.cs" />
     <Compile Include="Models\OlssModelVehicleServiceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommTrClassService.cs" />
+    <Compile Include="Services\CommTrGroupService.cs" />
     <Compile Include="Services\OlssModelVehicleService.cs" />
   </ItemGroup>
   <ItemGroup />

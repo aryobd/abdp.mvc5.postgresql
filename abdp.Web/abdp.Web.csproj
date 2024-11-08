@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\CommTrClassController.cs" />
+    <Compile Include="Controllers\CommTrGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OlssModelVehicleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +291,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\OlssModelVehicle\Index.cshtml" />
     <Content Include="Views\CommTrClass\Index.cshtml" />
+    <Content Include="Views\CommTrGroup\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

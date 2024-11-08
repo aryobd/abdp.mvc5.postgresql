@@ -1,18 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Class";
+    ViewBag.Title = "Group";
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Class</h2>
+<h2>Group</h2>
 
 <div class="table-responsive">
     <table id="MainDataTable" class="table table-striped">
         <thead>
             <tr>
                 <th>Group Description</th>
-                <th>Class Code</th>
-                <th>Class Description</th>
-                <th>Meter Size Code</th>
             </tr>
         </thead>
     </table>
@@ -27,17 +24,14 @@
                     "bServerSide"     : true,
                     "bProcessing"     : true,
                     "aaSorting"       : [ [0, "desc"] ],
-                    "sAjaxSource"     : "@Url.Action("AjaxHandler", "CommTrClass")",
+                    "sAjaxSource"     : "@Url.Action("AjaxHandler", "CommTrGroup")",
                     /*
                     "sDom"            : "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>", // WITH SEARCH
                     */
                     "sDom"            : "<'row'<'col-sm-6'l><'col-sm-6' >r>t<'row'<'col-sm-6'i><'col-sm-6'p>>", // NO SEARCH
                     "sPaginationType" : "full_numbers",
                     "aoColumns"       : [
-                        { "mData" : "group_desc" },
-                        { "mData" : "class_code" },
-                        { "mData" : "class_desc" },
-                        { "mData" : "meter_size_code" }
+                        { "mData" : "group_desc" }
                     ]
                 });
             })
