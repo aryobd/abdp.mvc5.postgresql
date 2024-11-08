@@ -32,11 +32,11 @@ namespace abdp.Web.Controllers
             try
             {
                 #region SET FILTER
-                Expression<Func<OlssModelVehicleServiceModel, bool>> bllFilter = null;
+                Expression<Func<OlssModelVehicleServiceModel, bool>> filter = null;
 
                 if (param.sSearch != null)
                 {
-                    bllFilter = (
+                    filter = (
                         o => o.model_vehicle_name.Contains(param.sSearch)
                              ||
                              o.model_vehicle_desc.Contains(param.sSearch)
@@ -48,7 +48,7 @@ namespace abdp.Web.Controllers
 
                 #region SET SORTING & ORDERING
                 var sortColumnIndex = Convert.ToInt32(Request["iSortCol_0"]);
-                Expression<Func<OlssModelVehicleServiceModel, string>> bllOrdering = (
+                Expression<Func<OlssModelVehicleServiceModel, string>> ordering = (
                     o => sortColumnIndex == 0 ? o.brand_name :
                          sortColumnIndex == 1 ? o.model_vehicle_name :
                          o.model_vehicle_desc
@@ -57,22 +57,22 @@ namespace abdp.Web.Controllers
                 #endregion SET SORTING & ORDERING
 
                 List<OlssModelVehicleServiceModel> lstData = _service.GetList(
-                    bllFilter,
+                    filter,
                     param.iDisplayLength,
                     param.iDisplayStart,
-                    bllOrdering,
+                    ordering,
                     sortDirection
                 );
 
                 _service.DoSave();
 
                 return Json(new
-                {
-                    param.sEcho,
-                    iTotalRecords = _service.TotalRows(),
-                    iTotalDisplayRecords = _service.TotalRows(bllFilter),
-                    aaData = lstData
-                },
+                    {
+                        param.sEcho,
+                        iTotalRecords = _service.TotalRows(),
+                        iTotalDisplayRecords = _service.TotalRows(filter),
+                        aaData = lstData
+                    },
                     JsonRequestBehavior.AllowGet
                 );
             }

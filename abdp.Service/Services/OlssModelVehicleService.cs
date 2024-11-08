@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace abdp.Service.Services
+namespace abdp.Service
 {
     public class OlssModelVehicleService : IOlssModelVehicleService
     {
@@ -18,7 +18,7 @@ namespace abdp.Service.Services
         {
             get
             {
-                PdamEntities dbContext = new PdamEntities();
+                AbdpEntities dbContext = new AbdpEntities();
 
                 #region 1
                 /*
@@ -143,7 +143,7 @@ namespace abdp.Service.Services
 
         public int DoSave()
         {
-            PdamEntities dbContext = new PdamEntities();
+            AbdpEntities dbContext = new AbdpEntities();
             var tran = dbContext.Database.BeginTransaction();
 
             try

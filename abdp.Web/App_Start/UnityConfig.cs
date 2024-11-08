@@ -1,5 +1,4 @@
 using abdp.Service;
-using abdp.Service.Services;
 
 using System.Web.Mvc;
 using Unity;
@@ -19,6 +18,7 @@ namespace abdp.Web
             // e.g. container.RegisterType<ITestService, TestService>();
 
             container.RegisterType<IOlssModelVehicleService, OlssModelVehicleService>();
+            container.RegisterType<ICommTrClassService, CommTrClassService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

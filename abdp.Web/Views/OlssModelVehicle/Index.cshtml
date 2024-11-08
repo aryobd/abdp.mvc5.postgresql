@@ -1,6 +1,6 @@
 ﻿@{
-//ViewBag.Title = "OLSS Model Vehicle";
-//Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.Title = "OLSS Model Vehicle";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>OLSS Model Vehicle</h2>
@@ -27,7 +27,10 @@
                     "bProcessing"     : true,
                     "aaSorting"       : [ [0, "desc"] ],
                     "sAjaxSource"     : "@Url.Action("AjaxHandler", "OlssModelVehicle")",
-                    "sDom"            : "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
+                    /*
+                    "sDom"            : "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>", // WITH SEARCH
+                    */
+                    "sDom"            : "<'row'<'col-sm-6'l><'col-sm-6' >r>t<'row'<'col-sm-6'i><'col-sm-6'p>>", // NO SEARCH
                     "sPaginationType" : "full_numbers",
                     "aoColumns"       : [
                         { "mData" : "brand_name" },

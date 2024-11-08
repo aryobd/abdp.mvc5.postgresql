@@ -9,11 +9,11 @@ namespace abdp.Data.Entities
 {
     public partial class PdamEntities : DbContext
     {
-        public PdamEntities() : base("abdp_Entities")
+        public PdamEntities() : base("pdam_Entities")
         {
         }
 
-        public virtual DbSet<tm_olss_brand> tm_olss_brand { get; set; }
-        public virtual DbSet<tm_olss_model_vehicle> tm_olss_model_vehicle { get; set; }
+        public virtual DbSet<comm_tr_group> comm_tr_group { get; set; }
+        public virtual DbSet<comm_tr_class> comm_tr_class { get; set; }
     }
 }
