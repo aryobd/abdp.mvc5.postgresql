@@ -1,4 +1,5 @@
 ﻿using abdp.Service.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,6 @@ namespace abdp.Service
         int TotalRows();
         int TotalRows(Expression<Func<CommTrGroupServiceModel, bool>> where);
 
-        int DoSave();
+        int DoSave(List<CommTrGroupServiceModel> lst);
     }
 }

@@ -8,7 +8,7 @@ namespace abdp.Service.Models
 {
     public class CommTrGroupServiceModel
     {
-        public int group_code { get; set; }
+        public Int16 group_code { get; set; }
         public string group_desc { get; set; }
     }
 }

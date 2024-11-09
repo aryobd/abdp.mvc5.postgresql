@@ -12,7 +12,10 @@ namespace abdp.Data.Entities
     public partial class comm_tr_group
     {
         [Key]
-        public int group_code { get; set; }
-        public string group_desc { get; set; }
+        [Column("group_code")]
+        public Int16 GroupCode { get; set; }
+
+        [Column("group_desc")]
+        public string GroupDesc { get; set; }
     }
 }

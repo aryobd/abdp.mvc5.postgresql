@@ -56,9 +56,22 @@ namespace abdp.Web.Controllers
                    param.iDisplayStart,
                    ordering,
                    sortDirection
-               );
+                );
 
-                _service.DoSave();
+                List<CommTrGroupServiceModel> lstNew = new List<CommTrGroupServiceModel>();
+                CommTrGroupServiceModel itmNew = new CommTrGroupServiceModel();
+
+                itmNew.group_code = 8;
+                itmNew.group_desc = "xxx";
+
+                lstNew.Add(itmNew);
+
+                itmNew.group_code = 9;
+                itmNew.group_desc = "yyy";
+
+                lstNew.Add(itmNew);
+
+                _service.DoSave(lstNew);
 
                 return Json(new
                     {

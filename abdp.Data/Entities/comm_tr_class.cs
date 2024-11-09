@@ -13,12 +13,12 @@ namespace abdp.Data.Entities
     {
         [Key]
         [Column(Order = 0)]
-        public int group_code { get; set; }
+        public Int16 group_code { get; set; }
         [Key]
         [Column(Order = 1)]
         public string class_code { get; set; }
 
         public string class_desc { get; set; }
-        public int? meter_size_code { get; set; }
+        public Int16? meter_size_code { get; set; }
     }
 }

@@ -19,6 +19,21 @@ namespace abdp.Service
             {
                 PdamEntities dbContext = new PdamEntities();
 
+                #region 1
+                // USING VIRTUAL OBJECT IN ENTITIES (SEE ENTITIES - ACTUALLY REMARKS ALL VIRTUAL OBJECT) 
+                var qry1 = dbContext.comm_tr_group.Select(
+                    o => new CommTrGroupServiceModel
+                    {
+                        group_code = o.GroupCode,
+                        group_desc = o.GroupDesc
+                    }
+                );
+
+                return qry1;
+                #endregion 1
+
+                /*
+                #region 3
                 // USING NATIVE SQL - DEFINE THE SQL QUERY
                 string sqlQuery = @"
                     select
@@ -29,9 +44,11 @@ namespace abdp.Service
                     ";
 
                 // EXECUTE THE QUERY AND MAP TO THE MODEL
-                var qry = dbContext.Database.SqlQuery<CommTrGroupServiceModel>(sqlQuery).AsQueryable();
+                var qry3 = dbContext.Database.SqlQuery<CommTrGroupServiceModel>(sqlQuery).AsQueryable();
 
-                return qry;
+                return qry3;
+                #endregion 3
+                */
             }
         }
 
@@ -72,7 +89,7 @@ namespace abdp.Service
             return Query.Where(where).Count();
         }
 
-        public int DoSave()
+        public int DoSave(List<CommTrGroupServiceModel> lst)
         {
             PdamEntities dbContext = new PdamEntities();
             var tran = dbContext.Database.BeginTransaction();
@@ -81,19 +98,19 @@ namespace abdp.Service
             {
                 dbContext.comm_tr_group.Add(new comm_tr_group
                 {
-                    group_code = 8,
-                    group_desc = "xxx"
+                    GroupCode = 8,
+                    GroupDesc = "xxx"
                 });
 
-                comm_tr_group item1 = new comm_tr_group();
-                item1.group_code = 9;
-                item1.group_desc = "yyy";
-                dbContext.comm_tr_group.Add(item1);
+                //comm_tr_group item1 = new comm_tr_group();
+                //item1.GroupCode = 9;
+                //item1.GroupDesc = "yyy";
+                //dbContext.comm_tr_group.Add(item1);
 
-                comm_tr_group item2 = new comm_tr_group();
-                item2.group_code = 10;
-                item2.group_desc = "zzz";
-                dbContext.comm_tr_group.Add(item2);
+                //comm_tr_group item2 = new comm_tr_group();
+                //item2.GroupCode = 10;
+                //item2.GroupDesc = "zzz";
+                //dbContext.comm_tr_group.Add(item2);
 
                 dbContext.SaveChanges();
 
