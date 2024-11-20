@@ -34,17 +34,26 @@
                     "sDom"            : "<'row'<'col-sm-6'l><'col-sm-6' >r>t<'row'<'col-sm-6'i><'col-sm-6'p>>", // NO SEARCH
                     "sPaginationType" : "full_numbers",
                     "aoColumns"       : [
-                        { "mData" : "group_desc" },
-                        { "mData" : "class_code" },
+                        { "mData" : "group_desc",      "width" : "0%" },
+                        { "mData" : "class_code",      "width" : "0%" },
                         { "mData" : "class_desc" },
-                        { "mData" : "meter_size_code" }
+                        { "mData" : "meter_size_code", "width" : "0%" }
                     ]
                 });
-            })
+            });
         }
 
         $(document).ready(function () {
             LoadDataTable();
         });
     </script>
+
+    !-- TAMBAHKAN CSS KUSTOM -->
+    <style>
+        /* MENGATUR VERTICAL ALIGNMENT HEADER TABEL */
+        #MainDataTable thead th {
+            vertical-align: middle; /* GUNAKAN 'middle' UNTUK CENTER ATAU 'top' UNTUK ATAS */
+            text-align: left; /* OPSIONAL:  UNTUK HORIZONTAL ALIGNMENT */
+        }
+    </style>
 }
