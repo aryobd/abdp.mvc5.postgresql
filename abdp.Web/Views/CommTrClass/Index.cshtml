@@ -48,12 +48,19 @@
         });
     </script>
 
-    !-- TAMBAHKAN CSS KUSTOM -->
+    <!-- TAMBAHKAN CSS KUSTOM -->
     <style>
         /* MENGATUR VERTICAL ALIGNMENT HEADER TABEL */
         #MainDataTable thead th {
             vertical-align: middle; /* GUNAKAN 'middle' UNTUK CENTER ATAU 'top' UNTUK ATAS */
             text-align: left; /* OPSIONAL:  UNTUK HORIZONTAL ALIGNMENT */
+        }
+
+        /* OPTIONAL:  MAKE COLUMNS RESIZABLE */
+        #MainDataTable th, #MainDataTable td {
+            resize: horizontal;
+            overflow: hidden;
+            word-wrap: break-word;
         }
     </style>
 }
