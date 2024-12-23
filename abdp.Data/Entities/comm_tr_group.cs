@@ -13,6 +13,7 @@ namespace abdp.Data.Entities
     {
         [Key]
         [Column("group_code")]
+        [Required]
         public Int16 GroupCode { get; set; }
 
         [Column("group_desc")]

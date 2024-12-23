@@ -91,6 +91,12 @@ namespace abdp.Service
 
         public int DoSave(List<CommTrGroupServiceModel> lst)
         {
+            using (var context = new PdamEntities())
+            {
+                var test = context.comm_tr_group.FirstOrDefault();
+                Console.WriteLine(test?.GroupDesc ?? "No Data");
+            }
+
             PdamEntities dbContext = new PdamEntities();
             var tran = dbContext.Database.BeginTransaction();
 
@@ -102,15 +108,12 @@ namespace abdp.Service
                     GroupDesc = "xxx"
                 });
 
-                //comm_tr_group item1 = new comm_tr_group();
-                //item1.GroupCode = 9;
-                //item1.GroupDesc = "yyy";
-                //dbContext.comm_tr_group.Add(item1);
+                comm_tr_group item1 = new comm_tr_group();
+                item1.GroupCode = 9;
+                item1.GroupDesc = "yyy";
+                dbContext.comm_tr_group.Add(item1);
 
-                //comm_tr_group item2 = new comm_tr_group();
-                //item2.GroupCode = 10;
-                //item2.GroupDesc = "zzz";
-                //dbContext.comm_tr_group.Add(item2);
+                var debugItem = dbContext.comm_tr_group.ToList(); // LIHAT PROPERTI YANG DIISI
 
                 dbContext.SaveChanges();
 
@@ -119,6 +122,7 @@ namespace abdp.Service
             catch (Exception ex)
             {
                 tran.Rollback();
+                Console.WriteLine(ex.Message);
             }
 
             return 1;

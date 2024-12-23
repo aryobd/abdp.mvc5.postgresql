@@ -81,5 +81,81 @@ namespace abdp.Web.Controllers
                 return View("Error" + "/n" + ex.Message);
             }
         }
+
+        //[HttpPost]
+        public ActionResult AjaxHandler2(DataTableRequest param)
+        {
+            try
+            {
+                #region FILTERING
+                Expression<Func<CommTrClassServiceModel, bool>> filter = null;
+
+                // GLOBAL SEARCH
+                if (!string.IsNullOrEmpty(param.Search?.Value))
+                {
+                    var searchValue = param.Search.Value;
+
+                    filter = o =>
+                        o.group_desc.Contains(searchValue)
+                        ||
+                        o.class_code.Contains(searchValue)
+                        ||
+                        o.class_desc.Contains(searchValue);
+                }
+                #endregion FILTERING
+
+                #region SORTING
+                string sortColumn = "class_code"; // Default sorting column
+                string sortDirection = "asc";    // Default sorting direction
+
+                if (param.Order != null && param.Order.Any())
+                {
+                    var sortOrder = param.Order.First();
+                    sortColumn = param.Columns[sortOrder.Column].Data;
+
+                    sortDirection = sortOrder.Dir;
+                }
+                #endregion SORTING
+
+                #region DATA FETCHING
+                // FETCH THE FILTERED AND SORTED DATA
+                //var lstData = _service.GetList(
+                //    filter, // filter
+                //    param.Length, // take
+                //    param.Start, // skip
+                //    sortDirection // orderBy
+                //);
+
+                // CALCULATE TOTAL RECORDS AND FILTERED RECORDS
+                var totalRecords = _service.TotalRows();
+                var totalFilteredRecords = _service.TotalRows(filter);
+                #endregion DATA FETCHING
+
+                #region RETURN JSON
+                //return Json(new
+                //{
+                //    draw = param.Draw,
+                //    recordsTotal = totalRecords,
+                //    recordsFiltered = totalFilteredRecords,
+                //    data = lstData // Format sesuai dengan DataTables modern
+                //});
+                #endregion RETURN JSON
+
+                return Json(new
+                {
+                    error = "An error occurred while processing your request.",
+                    details = "ex.Message"
+                });
+            }
+            catch (Exception ex)
+            {
+                // LOG ERROR (OPTIONAL)
+                return Json(new
+                {
+                    error = "An error occurred while processing your request.",
+                    details = ex.Message
+                });
+            }
+        }
     }
 }
